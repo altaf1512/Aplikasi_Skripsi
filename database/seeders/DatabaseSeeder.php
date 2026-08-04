@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\ExpertRule;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -72,6 +73,19 @@ class DatabaseSeeder extends Seeder
                 'rules' => ['Beli' => 0.9, 'Tahan' => 0.8, 'Jual' => 0.1]
             ],
         ];
+
+        User::factory()->create([
+            'name' => 'Admin SkripsiCare',
+            'email' => 'admin@skripsicare.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin',
+        ]);
+        User::factory()->create([
+            'name' => 'User SkripsiCare',
+            'email' => 'user@skripsicare.com',
+            'password' => bcrypt('password'),
+            'role' => 'user',
+        ]);
 
         foreach ($questions as $qData) {
             $question = Question::create([
